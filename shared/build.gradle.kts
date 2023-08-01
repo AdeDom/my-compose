@@ -33,6 +33,9 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                api(libs.io.insert.koin.core)
+                api(libs.io.insert.koin.compose)
             }
         }
         val androidMain by getting {
