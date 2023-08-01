@@ -24,6 +24,7 @@ import io.kamel.image.asyncPainterResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.koinInject
+import presentation.greeting.event.GreetingUiEvent
 import presentation.greeting.viewmodels.GreetingViewModel
 
 @OptIn(ExperimentalResourceApi::class)
@@ -42,7 +43,7 @@ fun App() {
         val uiState = viewModel.uiState
 
         LaunchedEffect(Unit) {
-            viewModel.getGreeting()
+            viewModel.onEvent(GreetingUiEvent.Initial)
         }
 
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
