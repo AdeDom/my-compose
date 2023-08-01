@@ -47,6 +47,9 @@ kotlin {
                 implementation(libs.io.ktor.serialization.kotlinx.json)
 
                 implementation(libs.media.kamel.image)
+
+                api(libs.dev.icerock.moko.mvvm.core)
+                api(libs.dev.icerock.moko.mvvm.compose)
             }
         }
         val androidMain by getting {
