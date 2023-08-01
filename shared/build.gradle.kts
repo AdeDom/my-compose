@@ -1,8 +1,10 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    alias(libs.plugins.jlleitschuh.gradle.ktlint)
 }
 
 kotlin {
@@ -22,7 +24,8 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        extraSpecAttributes["resources"] =
+            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     sourceSets {
@@ -75,5 +78,17 @@ android {
     }
     kotlin {
         jvmToolchain(11)
+    }
+}
+
+tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
+ktlint {
+    android.set(true)
+    ignoreFailures.set(false)
+    reporters {
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.SARIF)
     }
 }
