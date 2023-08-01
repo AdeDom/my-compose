@@ -2,6 +2,7 @@ package com.myapplication
 
 import android.app.Application
 import di.androidModule
+import di.commonModule
 import di.greetingModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -15,6 +16,7 @@ class MainApplication : Application() {
             androidContext(this@MainApplication)
             androidLogger()
             modules(
+                commonModule,
                 androidModule,
                 greetingModule
             )

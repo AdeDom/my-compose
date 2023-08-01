@@ -6,6 +6,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,9 +24,16 @@ fun App() {
     MaterialTheme {
         var greetingText by remember { mutableStateOf("Hello, World!") }
         var showImage by remember { mutableStateOf(false) }
+        var data by remember { mutableStateOf("") }
+        val greetingUseCase = koinInject<GetGreetingUseCase>()
+
+        LaunchedEffect(Unit) {
+            val result = greetingUseCase.execute()
+            data = result.toString()
+        }
+
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            val greeting = koinInject<GetGreetingUseCase>()
-            Text(greeting.execute())
+            Text(data)
             Button(onClick = {
                 greetingText = "Hello, ${getPlatformName()}"
                 showImage = !showImage

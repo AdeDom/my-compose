@@ -1,14 +1,13 @@
 package domain.usecases.greeting
 
-import data.datasource.local.greeting.GreetingLocalDataSource
-import data.datasource.local.platform.PlatformLocalDataSource
+import data.datasource.remote.default.GreetingRemoteDataSource
+import domain.models.GreetingModel
 
 class GetGreetingUseCase(
-    private val greetingLocalDataSource: GreetingLocalDataSource,
-    private val platformLocalDataSource: PlatformLocalDataSource
+    private val greetingRemoteDataSource: GreetingRemoteDataSource
 ) {
 
-    fun execute(): String {
-        return "${greetingLocalDataSource.getName()} - ${platformLocalDataSource.name}"
+    suspend fun execute(): GreetingModel {
+        return greetingRemoteDataSource.getGreeting()
     }
 }
