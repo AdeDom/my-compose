@@ -1,5 +1,5 @@
 package domain.models
 
-import data.models.GreetingResponse
+import data.models.greeting.GreetingResponse
 
 typealias GreetingModel = GreetingResponse

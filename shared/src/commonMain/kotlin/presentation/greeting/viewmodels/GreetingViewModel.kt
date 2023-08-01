@@ -1,13 +1,13 @@
 package presentation.greeting.viewmodels
 
 import base.BaseViewModel
-import domain.usecases.greeting.GetGreetingUseCase
+import domain.usecases.greeting.GetSampleComponentUseCase
 import kotlinx.coroutines.launch
 import presentation.greeting.event.GreetingUiEvent
 import presentation.greeting.state.GreetingUiState
 
 class GreetingViewModel(
-    private val greetingUseCase: GetGreetingUseCase
+    private val getSampleComponentUseCase: GetSampleComponentUseCase
 ) : BaseViewModel<GreetingUiEvent, GreetingUiState>(GreetingUiState()) {
 
     override fun onEvent(event: GreetingUiEvent) {
@@ -18,14 +18,11 @@ class GreetingViewModel(
                         emit {
                             copy(isLoading = true)
                         }
-                        val result = greetingUseCase.execute()
+                        val result = getSampleComponentUseCase.execute()
                         emit {
                             copy(
                                 isLoading = false,
-                                title = result.title.orEmpty(),
-                                subTitle = result.subTitle.orEmpty(),
-                                age = result.age ?: 0,
-                                imageUrl = result.imageUrl
+                                component = result
                             )
                         }
                     } catch (e: Throwable) {

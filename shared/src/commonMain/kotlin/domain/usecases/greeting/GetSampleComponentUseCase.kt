@@ -1,13 +1,13 @@
 package domain.usecases.greeting
 
 import data.datasource.remote.greeting.GreetingRemoteDataSource
-import domain.models.GreetingModel
+import data.models.sdui.Component
 
-class GetGreetingUseCase(
+class GetSampleComponentUseCase(
     private val greetingRemoteDataSource: GreetingRemoteDataSource
 ) {
 
-    suspend fun execute(): GreetingModel {
-        return greetingRemoteDataSource.getGreeting()
+    suspend fun execute(): Component {
+        return greetingRemoteDataSource.getSampleComponent()
     }
 }

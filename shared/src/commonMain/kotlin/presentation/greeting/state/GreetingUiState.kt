@@ -1,9 +1,8 @@
 package presentation.greeting.state
 
+import data.models.sdui.Component
+
 data class GreetingUiState(
     val isLoading: Boolean = false,
-    val title: String = "",
-    val subTitle: String = "",
-    val age: Int = 0,
-    val imageUrl: String? = null
+    val component: Component? = null
 )

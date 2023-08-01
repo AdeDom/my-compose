@@ -1,4 +1,4 @@
-package data.models
+package data.models.greeting
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

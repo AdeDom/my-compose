@@ -2,9 +2,10 @@ package di
 
 import data.datasource.local.greeting.GreetingLocalDataSource
 import data.datasource.local.greeting.GreetingLocalDataSourceImpl
-import data.datasource.remote.default.GreetingRemoteDataSource
-import data.datasource.remote.default.GreetingRemoteDataSourceImpl
+import data.datasource.remote.greeting.GreetingRemoteDataSource
+import data.datasource.remote.greeting.GreetingRemoteDataSourceImpl
 import domain.usecases.greeting.GetGreetingUseCase
+import domain.usecases.greeting.GetSampleComponentUseCase
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
@@ -22,4 +23,5 @@ val greetingModule = module {
 
     // domain
     factoryOf(::GetGreetingUseCase)
+    factoryOf(::GetSampleComponentUseCase)
 }
