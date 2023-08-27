@@ -54,4 +54,5 @@ ktlint {
 dependencies {
     implementation(libs.io.insert.koin.core)
     implementation(libs.io.insert.koin.android)
+    implementation(compose.material3)
 }

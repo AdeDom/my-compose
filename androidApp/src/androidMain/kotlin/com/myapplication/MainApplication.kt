@@ -2,6 +2,7 @@ package com.myapplication
 
 import android.app.Application
 import di.androidModule
+import di.champModule
 import di.commonModule
 import di.greetingModule
 import org.koin.android.ext.koin.androidContext
@@ -18,7 +19,8 @@ class MainApplication : Application() {
             modules(
                 commonModule,
                 androidModule,
-                greetingModule
+                greetingModule,
+                champModule
             )
         }
     }

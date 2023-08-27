@@ -1,5 +1,6 @@
 package utils
 
+import di.champModule
 import di.commonModule
 import di.greetingModule
 import di.iosModule
@@ -10,7 +11,8 @@ fun initKoin() {
         modules(
             commonModule,
             iosModule,
-            greetingModule
+            greetingModule,
+            champModule
         )
     }
 }

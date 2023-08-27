@@ -2,7 +2,7 @@ package data.datasource.remote.greeting
 
 import data.datasource.DataSourceProvider
 import data.models.greeting.GreetingResponse
-import data.models.sdui.Component
+import data.models.sdui.ComposableData
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import kotlinx.coroutines.CoroutineDispatcher
@@ -21,7 +21,7 @@ class GreetingRemoteDataSourceImpl(
         }
     }
 
-    override suspend fun getSampleComponent(): Component {
+    override suspend fun getSampleComponent(): ComposableData {
         return withContext(ioDispatcher) {
             dataSourceProvider.getHttpClient()
                 .get("${dataSourceProvider.getBaseUrl()}v3/eb514559-5f40-4e8e-aab0-4d1798149db7")

@@ -1,8 +1,8 @@
 package presentation.greeting.state
 
-import data.models.sdui.Component
+import data.models.sdui.ComposableData
 
 data class GreetingUiState(
     val isLoading: Boolean = false,
-    val component: Component? = null
+    val data: ComposableData? = null
 )
